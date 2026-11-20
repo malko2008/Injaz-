@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-t="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>مفكرتي الذكية</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#12102a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="مفكرتي">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+:root,[data-t=night]{--bg:#12102a;--pn:#1d1a3f;--p2:#2a2660;--ln:#3b3680;--tx:#f2eefc;--mu:#a29dd0;--ac:#ffc93c;--on:#2b1d00;--a2:#35e0c2;--dg:#ff5e7e;--sh:#0a0820}
+[data-t=day]{--bg:#efebff;--pn:#fff;--p2:#e4defc;--ln:#c9c0f5;--tx:#1d1847;--mu:#645f90;--ac:#f2a900;--on:#2b1d00;--a2:#0b9c84;--dg:#d92b55;--sh:#b9b0ea}
+body{background:var(--bg);color:var(--tx);font:14px/1.55 "Segoe UI",Tahoma,system-ui,sans-serif;min-height:100vh;padding:calc(88px + env(safe-area-inset-top)) 11px calc(82px + env(safe-area-inset-bottom));transition:background .3s,color .3s}
+#hud{position:fixed;top:0;left:0;right:0;z-index:20;background:var(--pn);border-bottom:3px solid var(--ln);padding:calc(4px + env(safe-area-inset-top)) 12px 4px}
+.r1,.r2{display:flex;align-items:center;gap:8px}
+#hud .ic{font-size:14px;padding:0 6px;line-height:1.2}
+.r1{justify-content:space-between}
+.lv{font-size:14px;color:var(--ac)}
+.pt{font-weight:700;font-size:12px}
+.bar{height:6px;background:var(--p2);border-radius:9px;margin:3px 0;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--a2),var(--ac));border-radius:9px;transition:width .5s}
+.r2{justify-content:space-between;font-size:10px;color:var(--mu)}
+.r2 span:not(#clk){background:var(--p2);padding:0 7px;border-radius:20px;color:var(--tx);font-weight:700;font-size:11px}
+.c{background:var(--pn);border:2px solid var(--ln);border-radius:16px;padding:12px;margin-bottom:11px;box-shadow:0 4px 0 var(--sh)}
+h2{font-size:15px;margin-bottom:6px}
+h3{font-size:14px;margin:6px 0 2px;color:var(--a2)}
+small{color:var(--mu);display:block}
+.b{border:0;border-radius:12px;background:var(--ac);color:var(--on);font:inherit;font-size:13px;font-weight:700;padding:7px 11px;box-shadow:0 3px 0 rgba(0,0,0,.28);cursor:pointer}
+.b:active{transform:translateY(3px);box-shadow:none}
+.b:disabled{opacity:.35;box-shadow:none;cursor:default}
+.b.sm{padding:4px 8px;font-size:11.5px}
+.b.g2{background:var(--p2);color:var(--tx)}
+.b.dg{background:var(--dg);color:#fff}
+.b.on{background:var(--a2);color:var(--on)}
+.ic{background:none;border:0;color:var(--tx);font-size:16px;cursor:pointer;padding:3px 7px}
+.x{color:var(--mu);font-size:15px}
+button:focus-visible,a:focus-visible{outline:2px solid var(--a2);outline-offset:2px}
+input,textarea{width:100%;background:var(--bg);color:var(--tx);border:2px solid var(--ln);border-radius:12px;padding:7px 10px;font:inherit;font-size:13.5px;margin-bottom:7px;outline:0}
+input:focus,textarea:focus{border-color:var(--a2)}
+textarea{min-height:70px;resize:vertical}
+.row{display:flex;gap:8px;align-items:center}
+.row>input{margin:0}
+.dn{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:8px;align-items:center;text-align:center}
+ul{list-style:none;padding:0}
+.tk{display:flex;align-items:center;gap:7px;padding:6px 0;border-top:1px solid var(--ln)}
+.cb{width:26px;height:26px;flex:none;border-radius:9px;border:2px solid var(--a2);background:transparent;color:var(--on);font-weight:900;cursor:pointer}
+.ok .cb{background:var(--a2)}
+.ok .tt b{text-decoration:line-through;opacity:.6}
+.tt{flex:1;min-width:0}
+.em{color:var(--mu);padding:8px 0}
+.nc li{display:flex;gap:6px;align-items:center;padding:4px 0;border-top:1px solid var(--ln);word-break:break-word}
+.nc li span{flex:1}
+.nc a{color:var(--a2)}
+.am{background:var(--p2);border-radius:8px;padding:0 8px;color:var(--ac)}
+.tot{color:var(--ac);font-weight:700}
+.rt{display:flex;gap:8px;margin-bottom:8px}
+.rt .b{flex:1}
+.wz{border-inline-start:5px solid var(--ac);background:var(--p2);border-radius:12px;padding:9px 12px;font-size:15px;line-height:1.8;margin:8px 0}
+.st{display:flex;gap:6px;align-items:center;padding:5px 0;border-top:1px solid var(--ln)}
+.st span{flex:1}
+.lb{font-weight:700;margin:6px 0 4px;color:var(--a2)}
+.gt{font-size:15px;font-weight:700}
+.pth{display:flex;flex-direction:column;gap:16px;padding:8px 0}
+.nd{display:flex;align-items:center;gap:12px;width:82%}
+.nd:nth-child(even){align-self:flex-end}
+.nd .o{width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:15px;border:3px solid var(--ln);background:var(--p2)}
+.nd.done .o{background:var(--a2);color:var(--on);border-color:var(--a2)}
+.nd.miss .o{background:var(--dg);color:#fff;border-color:var(--dg)}
+.nd.cur .o{background:var(--ac);color:var(--on);border-color:var(--ac);animation:pl 1.8s infinite}
+.nd.lock{opacity:.6}
+.big{font-size:30px;font-weight:900;color:var(--ac);line-height:1.2}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);background:var(--pn);border-top:3px solid var(--ln);padding:3px 6px calc(3px + env(safe-area-inset-bottom));gap:3px}
+nav button{background:none;border:0;color:var(--mu);font:inherit;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:0;padding:4px 2px;border-radius:14px;transition:.25s;cursor:pointer}
+nav button span{font-size:19px;transition:transform .25s}
+nav button.on{background:var(--p2);color:var(--ac);font-weight:700}
+nav button.on span{transform:translateY(-3px) scale(1.15)}
+.tabs3{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:6px;margin-bottom:12px}
+select{background:var(--bg);color:var(--tx);border:2px solid var(--ln);border-radius:10px;padding:5px 8px;font:inherit}
+#v.in{animation:vi .3s ease}
+#tmr{display:none;position:fixed;left:10px;right:10px;bottom:calc(68px + env(safe-area-inset-bottom));z-index:30;background:var(--ac);color:var(--on);border-radius:16px;padding:8px 14px;align-items:center;gap:10px;box-shadow:0 4px 0 var(--sh)}
+#tmr span{flex:1;font-weight:700;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+#tmr b{font-size:17px;font-variant-numeric:tabular-nums}
+#ts{position:fixed;top:calc(92px + env(safe-area-inset-top));left:50%;transform:translate(-50%,-20px);background:var(--tx);color:var(--bg);padding:8px 18px;border-radius:20px;z-index:50;opacity:0;pointer-events:none;transition:.3s;font-weight:700}
+#ts.s{opacity:1;transform:translate(-50%,0)}
+.fx{position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden}
+.fx i{position:absolute;top:-20px;width:10px;height:16px;border-radius:2px;animation:fl 2.4s ease-in forwards}
+.fx b{position:absolute;top:38%;left:50%;transform:translateX(-50%);background:var(--ac);color:var(--on);padding:12px 22px;border-radius:16px;font-size:18px;white-space:nowrap;animation:pop .5s}
+@keyframes fl{to{transform:translateY(105vh) rotate(var(--r));opacity:.9}}
+@keyframes pop{from{transform:translateX(-50%) scale(.3);opacity:0}}
+@keyframes vi{from{opacity:0;transform:translateY(10px)}}
+@keyframes pl{50%{box-shadow:0 0 0 10px rgba(255,201,60,.2)}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition:none!important}.fx i{display:none}}
+</style>
+</head>
+<body>
+<header id="hud"></header>
+<main id="v"></main>
+<div id="tmr"><span id="tl"></span><b id="tc"></b><button class="b sm dg" data-a="cx">إلغاء</button></div>
+<div id="ts"></div>
+<nav>
+<button data-a="go" data-i="0"><span>🏟️</span>ساحة اليوم</button>
+<button data-a="go" data-i="1"><span>🧭</span>الخطة البعيدة</button>
+<button data-a="go" data-i="2"><span>🏆</span>مسار التحدي</button>
+<button data-a="go" data-i="3"><span>🌾</span>سجل الحصاد</button>
+<button data-a="go" data-i="4"><span>💎</span>قيمك المساعدة</button>
+</nav>
+<script>
+const $=s=>document.querySelector(s),e=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const mem={},st={get:k=>{try{return localStorage.getItem(k)}catch(x){return mem[k]==null?null:mem[k]}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(x){mem[k]=v}}};
+const iso=d=>{const z=new Date(d.getTime()-d.getTimezoneOffset()*6e4);return z.toISOString().slice(0,10)};
+const pd=s=>{const a=s.split('-').map(Number);return new Date(a[0],a[1]-1,a[2])};
+const ad=(s,n)=>{const d=pd(s);d.setDate(d.getDate()+n);return iso(d)};
+const TD=()=>iso(new Date());
+let S;try{S=JSON.parse(st.get('mk1'))}catch(x){}
+S=S||{days:{},goals:[],theme:'night',start:TD()};
+S.vals=S.vals||{goals:'',vision:'',reality:'',mission:''};
+S.goals.forEach(g=>{g.h=g.h||'s';g.hyp=g.hyp||'';g.alts=g.alts||[]});
+Object.keys(S.days).sort().forEach(k=>{const d=S.days[k];if(d.tasks.length||d.notes.length||d.rate||d.sum||d.focus){if(k<S.start)S.start=k}else if(k<S.start)delete S.days[k]});
+document.documentElement.dataset.t=S.theme;
+const save=()=>st.set('mk1',JSON.stringify(S));
+const uid=()=>Math.random().toString(36).slice(2,9);
+const D=s=>S.days[s]||(S.days[s]={tasks:[],notes:[],rate:'',sum:'',wi:0,focus:0});
+const G=i=>S.goals.find(g=>g.id==i);
+const stat=d=>{if(!d||!d.tasks.length)return{n:0,k:0,p:0};const k=d.tasks.filter(t=>t.f).length;return{n:d.tasks.length,k,p:Math.round(k/d.tasks.length*100)}};
+const dpts=d=>{const s=stat(d);return Math.round(20*s.k*s.p/100)+(s.n&&s.p==100?30:0)+(d?d.focus*10:0)};
+const total=()=>Object.values(S.days).reduce((a,d)=>a+dpts(d),0);
+const LV=[['مبتدئ',0],['مثابر',300],['منجز',1000],['متقن',2500],['سيد وقته',5000]];
+const lvl=p=>{let i=0;LV.forEach((l,j)=>{if(p>=l[1])i=j});return i};
+function sk(){let s=0,h=0;const T=TD(),ks=Object.keys(S.days).sort();let c=S.start;if(ks[0]&&ks[0]<c)c=ks[0];while(c<=T){const x=stat(S.days[c]);if(x.p>=70){s++;if(s%7==0)h++}else if(c<T){if(h>0)h--;else s=0}c=ad(c,1)}return{s,h}}
+const wk=s=>Math.max(0,Math.floor(Math.round((pd(s)-pd(S.start))/864e5)/7));
+const wt=w=>Math.round(250*Math.pow(1.15,w));
+const wp=w=>Object.keys(S.days).reduce((a,c)=>a+(wk(c)==w?dpts(S.days[c]):0),0);
+const W=[['ممتاز','من جدّ وجد، ومن زرع حصد.'],['ممتاز','النجاح عادةٌ يومية، وقد صنعتَ اليوم واحدة منها.'],['ممتاز','الإنجاز الصغير المتكرر أقوى من الحماس الكبير العابر.'],['ممتاز','اليوم الذي تفخر به يبني الأيام التي بعده.'],['ممتاز','ما أجمل أن يتحول التخطيط إلى فعل!'],['ممتاز','الاستمرار سرّ الوصول، وقد خطوتَ خطوة جديدة.'],['ممتاز','كافئ نفسك بقدر تعبك، ثم عد غداً أقوى.'],['جيد','خير الأعمال أدومها وإن قلّ.'],['جيد','التقدم البطيء أفضل من الوقوف في مكانك.'],['جيد','كل يوم جيد يقرّبك من يوم ممتاز.'],['جيد','لا تقارن بدايتك بنهاية غيرك.'],['جيد','ما لا يُدرَك كله لا يُترَك كله.'],['جيد','الثبات على الطريق أهم من سرعة السير.'],['جيد','أحسنتَ، وغداً فرصة لتحسّن ما بدأت.'],['متعب','الراحة جزء من الطريق وليست نهايته.'],['متعب','بعد العسر يسر، وبعد التعب راحة.'],['متعب','لا بأس أن تتعب، المهم ألا تتوقف عن المحاولة.'],['متعب','اليوم الثقيل لا يعني أنك ضعيف، بل أنك تحاول.'],['متعب','نم جيداً؛ فالغد صفحة جديدة بيضاء.'],['متعب','حتى القمر يغيب ليعود أكثر إشراقاً.']];
+const wsel=d=>{const l=W.filter(x=>x[0]==d.rate);return l[d.wi%l.length][1]};
+const TW=['الوقت كالسيف إن لم تقطعه قطعك.','من لم يخطط لوقته، خطّط الآخرون له.','ابدأ بالأهم قبل الأكثر إلحاحاً.','ما لا يُجدول لا يُنجز غالباً.','ساعة تخطيط توفّر ساعات من التخبّط.','الوقت هو الحياة، فلا تضيّع حياتك.','لا تؤجل عمل اليوم إلى الغد.','قسّم الهدف الكبير إلى خطوات صغيرة، وابدأ بأسهلها.','التركيز في أمر واحد يعدل ساعات من التشتت.','ليست المشكلة في قلة الوقت، بل في كثرة ما لا يهم.','رتّب أولوياتك قبل أن ترتّب مهامك.','قل «لا» لما لا يخدم هدفك لتقول «نعم» لما يخدمه.','الخطة الناقصة التي تُنفَّذ خير من خطة كاملة تبقى في الدفتر.','راجع يومك في المساء، وخطّط لغدك قبل أن تنام.','الوقت لا يُشترى ولا يُعوَّض، فاستثمره.','جلسة تركيز قصيرة بلا مقاطعة تنجز أكثر من يوم مشتت.','احجز وقتاً للراحة؛ فالعقل المرهق لا يخطط جيداً.','الهدف بلا موعد مجرد أمنية.','ابدأ ولو بخمس دقائق؛ فالبداية أصعب ما في المهمة.','خصّص أفضل ساعات نشاطك لأهم أعمالك.'];
+let ti=Math.floor(Math.random()*TW.length);if(ti===S.lw)ti=(ti+1)%TW.length;S.lw=ti;save();
+const HZ=[['m','شهري / بضعة أشهر'],['y','سنوي'],['s','استراتيجي']];
+let tab=0,cur=TD(),hv=0,zh='m',TM=null,draft={nt:'',ng:'',nn:''},tt;
+function toast(m){const t=$('#ts');t.textContent=m;t.classList.add('s');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('s'),2200)}
+function party(){const f=document.createElement('div');f.className='fx';let h='';for(let i=0;i<48;i++)h+=`<i style="left:${Math.random()*100}%;background:hsl(${Math.random()*360} 90% 60%);animation-delay:${Math.random()*.6}s;--r:${Math.random()*720-360}deg"></i>`;f.innerHTML=h+'<b>🎉 أحسنت! أنجزت 100%</b>';document.body.append(f);setTimeout(()=>f.remove(),3200)}
+function fb(t){const a=document.createElement('textarea');a.value=t;document.body.append(a);a.select();try{document.execCommand('copy');toast('تم النسخ')}catch(x){toast('تعذر النسخ')}a.remove()}
+function cls(x){const n=x.replace(/[٠-٩]/g,c=>c.charCodeAt(0)-1632).replace(/٫/g,'.'),u=n.match(/(?:https?:\/\/|www\.)\S+|\b[\w-]+\.(?:com|net|org|io|me|app|co|sa|ae|eg)\S*/i),m=n.match(/\d+(?:,\d{3})*(?:\.\d+)?/);if(u)return{k:'l',x,u:/^https?:/i.test(u[0])?u[0]:'https://'+u[0]};if(m&&/(صرفت|دفعت|مصروف|مصاريف|اشتريت|شراء|ريال|درهم|دينار|جنيه|ليرة|دولار|ر\.س|\$|sar|usd|aed|egp)/i.test(n))return{k:'m',x,a:parseFloat(m[0].replace(/,/g,''))};return{k:'i',x}}
+function hud(){const p=total(),i=lvl(p),n=LV[i+1],b=n?Math.round((p-LV[i][1])/(n[1]-LV[i][1])*100):100,k=sk();$('#hud').innerHTML=`<div class="r1"><b class="lv">${LV[i][0]}</b><span class="pt">⭐ ${p}</span><button class="ic" data-a="th" aria-label="تبديل الوضع">${S.theme=='night'?'☀️':'🌙'}</button></div><div class="bar"><i style="width:${b}%"></i></div><div class="r2"><span>🔥 ${k.s}</span><span>🛡️ ${k.h}</span><span id="clk"></span></div>`;tick()}
+function tick(){const n=new Date(),c=$('#clk');if(c)c.textContent=n.toLocaleDateString('ar',{weekday:'short',day:'numeric',month:'short'})+' '+n.toLocaleTimeString('ar',{hour:'2-digit',minute:'2-digit',second:'2-digit'})}
+function tm(){const o=$('#tmr');if(!TM){o.style.display='none';return}const r=Math.max(0,Math.ceil((TM.end-Date.now())/1000));if(r<=0){D(TM.d).focus++;save();TM=null;o.style.display='none';if(navigator.vibrate)navigator.vibrate(300);toast('انتهى التركيز! +10 نقاط');render();return}o.style.display='flex';$('#tl').textContent='⏱️ '+TM.t;$('#tc').textContent=String(r/60|0).padStart(2,'0')+':'+String(r%60).padStart(2,'0')}
+function vDay(){const d=D(cur),s=stat(d),T=TD(),lab=cur==T?'اليوم':cur==ad(T,-1)?'أمس':cur==ad(T,1)?'غداً':'',dl=pd(cur).toLocaleDateString('ar',{weekday:'long',day:'numeric',month:'long'}),nk=k=>d.notes.filter(n=>n.k==k),sm=Math.round(nk('m').reduce((a,n)=>a+(n.a||0),0)*100)/100,
+ni=n=>`<li><span>${n.k=='l'?`<a href="${e(n.u)}" target="_blank" rel="noopener">${e(n.x)}</a>`:e(n.x)}</span>${n.k=='m'?`<b class="am">${n.a}</b>`:''}<button class="ic x" data-a="dn" data-i="${n.id}" aria-label="حذف">✕</button></li>`,
+nl=(t,k,x)=>`<h3>${t}${x||''}</h3><ul>${nk(k).map(ni).join('')||'<li class="em">لا شيء بعد</li>'}</ul>`;
+return `<section class="c"><div class="wz" style="margin:0">⏳ ${e(TW[ti])}</div></section>
+<section class="c dn"><button class="b g2" data-a="nv" data-i="-1"${cur<=S.start?' disabled':''}>→ السابق</button><div><b>${lab||dl}</b><small>${lab?dl:''}</small></div><button class="b g2" data-a="nv" data-i="1">التالي ←</button></section>
+<section class="c"><h2>مهام اليوم وغاياتها</h2><div class="bar"><i style="width:${s.p}%"></i></div><small>${s.k} من ${s.n} مهام · ${s.p}% · نقاط اليوم ${dpts(d)}</small>
+<ul>${d.tasks.map(t=>`<li class="tk${t.f?' ok':''}"><button class="cb" data-a="tg" data-i="${t.id}" aria-label="إنجاز">${t.f?'✓':''}</button><div class="tt"><b>${e(t.t)}</b>${t.g?`<small>الغاية: ${e(t.g)}</small>`:''}</div><button class="b sm" data-a="foc" data-i="${t.id}">ابدأ 15د</button><button class="ic x" data-a="dt" data-i="${t.id}" aria-label="حذف">✕</button></li>`).join('')||'<li class="em">لا مهام بعد. أضف مهمة وغايتها لتبدأ.</li>'}</ul>
+<div style="margin-top:10px"><input id="nt" placeholder="المهمة" value="${e(draft.nt)}"><input id="ng" placeholder="الغاية: لماذا تهمك؟" value="${e(draft.ng)}"><button class="b" data-a="at">إضافة المهمة</button></div></section>
+<section class="c nc"><h2>المفكرة الفورية</h2><textarea id="nn" placeholder="اكتب أي شيء، كل سطر يُفرز وحده: مصروف أو فكرة أو رابط">${e(draft.nn)}</textarea><button class="b" data-a="an">فرز وحفظ</button>${nl('💸 المصاريف','m',` <span class="tot">المجموع: ${sm}</span>`)}${nl('💡 الأفكار','i')}${nl('🔗 الروابط','l')}</section>
+<section class="c"><h2>نهاية اليوم</h2><div class="rt">${['ممتاز','جيد','متعب'].map(r=>`<button class="b${d.rate==r?' on':' g2'}" data-a="rt" data-i="${r}">${r}</button>`).join('')}</div><textarea data-c="sum" placeholder="خلاصة اليوم">${e(d.sum)}</textarea>${d.rate?`<div class="wz">${e(wsel(d))}</div><div class="row"><button class="b sm g2" data-a="wz">حكمة أخرى</button><button class="b sm g2" data-a="cp">نسخ</button></div>`:'<small>اختر تقييم يومك لتظهر لك حكمة تناسبه.</small>'}</section>`}
+function vSt(){const gs=S.goals.filter(g=>g.h==zh),hn=HZ.find(x=>x[0]==zh)[1],alt=g=>{const mx=Math.max(0,...g.alts.map(a=>a.r));return g.alts.map((a,j)=>`<li class="st"><span>${e(a.t)}${g.alts.length>1&&a.r==mx?' <b class="am">الأفضل</b>':''}</span><select data-c="ar" data-i="${g.id}" data-j="${j}" aria-label="التقييم">${[1,2,3,4,5].map(r=>`<option${r==a.r?' selected':''}>${r}</option>`).join('')}</select><button class="ic x" data-a="da" data-i="${g.id}" data-j="${j}" aria-label="حذف">✕</button></li>`).join('')};
+return `<div class="tabs3">${HZ.map(x=>`<button class="b sm${x[0]==zh?'':' g2'}" data-a="zh" data-i="${x[0]}">${x[1]} (${S.goals.filter(g=>g.h==x[0]).length})</button>`).join('')}</div><section class="c"><h2>الخطة البعيدة · ${hn}</h2><small>أضف أكثر من هدف، ولكل هدف خطته الخاصة. أرسل خطواتها إلى ساحة اليوم.</small><button class="b" style="margin-top:10px" data-a="ag">هدف جديد</button></section>`+(gs.map((g,n)=>`<article class="c"><div class="lb">الهدف ${n+1}</div><input class="gt" data-c="gg" data-i="${g.id}" placeholder="الهدف" value="${e(g.g)}"><div class="lb">الفرضيات</div><textarea data-c="gh" data-i="${g.id}" placeholder="ما الذي تفترض صحته لينجح هذا الهدف؟">${e(g.hyp)}</textarea><div class="lb">خطوات الإنجاز</div><ul>${g.steps.map((x,j)=>`<li class="st"><span>${e(x)}</span><button class="b sm" data-a="ss" data-i="${g.id}" data-j="${j}">إلى ساحة اليوم</button><button class="ic x" data-a="ds" data-i="${g.id}" data-j="${j}" aria-label="حذف">✕</button></li>`).join('')}</ul><div class="row" style="margin:6px 0 8px"><input id="as${g.id}" placeholder="أضف خطوة"><button class="b sm" data-a="as" data-i="${g.id}">إضافة</button></div><div class="lb">الأثر المتوقع</div><textarea data-c="gi" data-i="${g.id}">${e(g.imp)}</textarea><div class="lb">المعوقات وحلولها</div><textarea data-c="go" data-i="${g.id}">${e(g.obs)}</textarea><div class="lb">تحديد البدائل وتقييمها</div><small>قيّم كل بديل من 1 إلى 5</small><ul>${alt(g)}</ul><div class="row" style="margin:6px 0 10px"><input id="aa${g.id}" placeholder="أضف بديلاً"><select id="ab${g.id}" aria-label="التقييم"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select><button class="b sm" data-a="aa" data-i="${g.id}">إضافة</button></div><button class="b sm dg" data-a="dg" data-i="${g.id}">حذف الهدف</button></article>`).join('')||'<p class="em">لا أهداف في هذه الخطة بعد. أضف هدفك الأول.</p>')}
+function vVl(){const F=[['goals','🎯 حدد أهدافك','ما الذي تريد تحقيقه في حياتك؟'],['vision','🔭 حدد رؤيتك لنفسك','كيف تريد أن تكون بعد سنوات؟'],['reality','🪞 شخّص واقعك','أين أنت الآن؟ ما نقاط قوتك وما الذي يعطلك؟'],['mission','🧭 حدد رسالتك','سبب وجودك: لماذا تفعل ما تفعله؟']];return `<section class="c"><h2>قيمك المساعدة</h2><small>أربع خانات تضيء طريقك قبل التخطيط.</small></section>`+F.map(f=>`<section class="c"><h2>${f[1]}</h2><small>${f[2]}</small><textarea data-c="v_${f[0]}" style="margin-top:8px;min-height:90px">${e(S.vals[f[0]])}</textarea></section>`).join('')}
+function vCh(){const T=TD(),w=wk(T),p=wp(w),g=wt(w),k=sk(),left=7-(Math.round((pd(T)-pd(S.start))/864e5)%7);let n='';for(let i=Math.max(0,w-1);i<=w+4;i++){const c=i<w?(wp(i)>=wt(i)?'done':'miss'):i==w?'cur':'lock';n+=`<div class="nd ${c}"><div class="o">${c=='done'?'✓':c=='miss'?'✕':i+1}</div><div><b>الأسبوع ${i+1}</b><small>الهدف ${wt(i)} نقطة${i==w?` · لديك ${p}`:''}</small></div></div>`}
+return `<section class="c"><h2>هدف هذا الأسبوع</h2><div class="big">${p} / ${g}</div><div class="bar"><i style="width:${Math.min(100,Math.round(p/g*100))}%"></i></div><small>${p>=g?'حققت هدف الأسبوع، واصل!':`المتبقي ${g-p} نقطة · ${left} أيام لنهاية الأسبوع`}</small></section>
+<section class="c"><h2>مسار المستويات</h2><div class="pth">${n}</div><small>يبدأ الهدف بـ 250 نقطة ويزيد 15% كل أسبوع.</small></section>
+<section class="c"><h2>كيف تُحسب النقاط</h2><ul><li>نقاط اليوم = 20 × المهام المنجزة × نسبة الإنجاز%</li><li>+30 نقطة عند إكمال 100%</li><li>+10 نقاط لكل جلسة تركيز 15 دقيقة</li><li>🔥 70% أو أكثر يومياً تزيد الشعلة (الآن ${k.s})</li><li>🛡️ كل 7 أيام متتالية تمنحك درع تجميد (لديك ${k.h})</li></ul></section>`}
+function rg(){const T=TD(),r=[];let a=hv?T.slice(0,8)+'01':ad(T,-6);if(a<S.start)a=S.start;for(let c=a;c<=T;c=ad(c,1))r.push(c);return r}
+function hr(r){const o={ok:[],no:[],k:0,n:0,pt:0};r.forEach(c=>{const d=S.days[c];if(!d)return;o.pt+=dpts(d);d.tasks.forEach(t=>{o.n++;const l=c.slice(5).replace('-','/')+'  '+t.t;if(t.f){o.k++;o.ok.push(l)}else o.no.push(l)})});o.p=o.n?Math.round(o.k/o.n*100):0;return o}
+function vHv(){const h=hr(rg()),li=a=>a.map(x=>`<li class="st"><span>${e(x)}</span></li>`).join('')||'<li class="em">لا شيء</li>';return `<div class="tabs"><button class="b${hv?' g2':''}" data-a="hv" data-i="0">أسبوعي</button><button class="b${hv?'':' g2'}" data-a="hv" data-i="1">شهري</button></div>
+<section class="c"><h2>نسبة الإنجاز</h2><div class="big">${h.p}%</div><div class="bar"><i style="width:${h.p}%"></i></div><small>${h.k} من ${h.n} مهام · ${h.pt} نقطة</small></section>
+<section class="c"><h2>✅ ما أُنجز</h2><ul>${li(h.ok)}</ul></section><section class="c"><h2>⏳ ما لم يُنجز</h2><ul>${li(h.no)}</ul></section><button class="b" data-a="ex">تصدير كملف txt</button>`}
+function exp(){const r=rg(),h=hr(r),L=[`مفكرتي الذكية - سجل الحصاد ${hv?'الشهري':'الأسبوعي'}`,`من ${r[0]} إلى ${r[r.length-1]}`,`نسبة الإنجاز: ${h.p}% (${h.k}/${h.n}) - النقاط: ${h.pt}`,'','ما أُنجز:',...(h.ok.length?h.ok.map(x=>'- '+x):['-']),'','ما لم يُنجز:',...(h.no.length?h.no.map(x=>'- '+x):['-'])],b=new Blob(['\ufeff'+L.join('\n')],{type:'text/plain;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`harvest-${hv?'month':'week'}.txt`;document.body.append(a);a.click();a.remove();toast('تم تصدير الملف')}
+function render(anim){hud();const v=$('#v');v.innerHTML=[vDay,vSt,vCh,vHv,vVl][tab]();document.querySelectorAll('nav button').forEach((b,i)=>b.classList.toggle('on',i==tab));if(anim){v.classList.remove('in');void v.offsetWidth;v.classList.add('in')}}
+const A={
+go:i=>{tab=+i;scrollTo(0,0);render(1)},
+th:()=>{S.theme=S.theme=='night'?'day':'night';document.documentElement.dataset.t=S.theme;save();hud()},
+nv:i=>{const n=ad(cur,+i);if(n<S.start)return toast('هذا أول يوم لك في مفكرتي');cur=n;render(1)},
+at:()=>{const t=draft.nt.trim();if(!t)return toast('اكتب المهمة أولاً');D(cur).tasks.push({id:uid(),t,g:draft.ng.trim(),f:0});draft.nt=draft.ng='';save();render()},
+tg:i=>{const d=D(cur),a=stat(d).p,t=d.tasks.find(x=>x.id==i);t.f=t.f?0:1;save();render();if(a<100&&stat(d).p==100)party()},
+dt:i=>{const d=D(cur);d.tasks=d.tasks.filter(x=>x.id!=i);save();render()},
+foc:i=>{if(TM)return toast('لديك مؤقت يعمل بالفعل');const t=D(cur).tasks.find(x=>x.id==i);TM={d:cur,t:t.t,end:Date.now()+9e5};tm()},
+cx:()=>{TM=null;tm()},
+an:()=>{const l=draft.nn.split(/\n+/).map(x=>x.trim()).filter(Boolean);if(!l.length)return toast('اكتب نصاً أولاً');const d=D(cur);l.forEach(x=>{const n=cls(x);n.id=uid();d.notes.push(n)});draft.nn='';save();render()},
+dn:i=>{const d=D(cur);d.notes=d.notes.filter(n=>n.id!=i);save();render()},
+rt:v=>{const d=D(cur);d.rate=v;d.wi=Math.floor(Math.random()*20);save();render()},
+wz:()=>{D(cur).wi++;save();render()},
+cp:()=>{const t=wsel(D(cur));if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>toast('تم النسخ'),()=>fb(t));else fb(t)},
+zh:i=>{zh=i;render()},
+ag:()=>{S.goals.unshift({id:uid(),g:'',steps:[],imp:'',obs:'',hyp:'',alts:[],h:zh});save();render()},
+aa:i=>{const v=$('#aa'+i).value.trim();if(!v)return;G(i).alts.push({t:v,r:+$('#ab'+i).value});save();render()},
+da:(i,b)=>{G(i).alts.splice(+b.dataset.j,1);save();render()},
+dg:i=>{S.goals=S.goals.filter(g=>g.id!=i);save();render()},
+as:i=>{const el=$('#as'+i),v=el.value.trim();if(!v)return;G(i).steps.push(v);save();render()},
+ds:(i,b)=>{G(i).steps.splice(+b.dataset.j,1);save();render()},
+ss:(i,b)=>{const g=G(i);D(cur).tasks.push({id:uid(),t:g.steps[+b.dataset.j],g:g.g,f:0});save();hud();toast('أُرسلت الخطوة إلى ساحة اليوم')},
+hv:i=>{hv=+i;render()},
+ex:exp};
+document.addEventListener('click',x=>{const b=x.target.closest('[data-a]');if(b&&A[b.dataset.a])A[b.dataset.a](b.dataset.i,b)});
+document.addEventListener('input',x=>{const t=x.target;if(t.id in draft)draft[t.id]=t.value;const c=t.dataset.c;if(!c)return;if(c=='sum')D(cur).sum=t.value;else if(c=='ar'){G(t.dataset.i).alts[+t.dataset.j].r=+t.value;save();render();return}else if(c.startsWith('v_'))S.vals[c.slice(2)]=t.value;else G(t.dataset.i)[{gg:'g',gi:'imp',go:'obs',gh:'hyp'}[c]]=t.value;save()});
+document.addEventListener('keydown',x=>{if(x.key!='Enter')return;const id=x.target.id;if(id=='ng'||id=='nt')A.at();else if(id&&id.startsWith('as'))A.as(id.slice(2));else if(id&&id.startsWith('aa'))A.aa(id.slice(2))});
+render(1);
+setInterval(()=>{tick();tm()},1000);
+if('serviceWorker' in navigator)addEventListener('load',()=>{try{navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(x){}});
+</script>
+</body>
+</html>
